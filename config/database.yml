@@ -1,0 +1,19 @@
+default: &default
+  adapter: <%= ENV['DB_ADAPTER'] || 'postgresql' %>
+  encoding: <%= ENV['DB_ENCODING'] || 'unicode' %>
+  pool: <%= ENV['DB_POOL'] || 10 %>
+  timeout: <%= ENV['DB_TIMEOUT'] || 5000 %>
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  username: <%= ENV['DB_USERNAME'] || 'sergeykupreenkov' %>
+  password: <%= ENV['DB_PASSWORD'] || '' %>
+  collation: ru_RU.UTF-8
+  template: template0
+
+development:
+  <<: *default
+  database: <%= ENV['DB_NAME']%>
+
+
+test:
+  <<: *default
+  database: <%= 'bepaid_test' %>
